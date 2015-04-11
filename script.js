@@ -1,15 +1,19 @@
-var utl = (function() {
-      var i = 0;
+// arrays.
 
-      return {
-        nameGen: function() {
-          var name = "custname" + i;
-          i = i + 1;
-          return name;
-        }
-    }
-}());
+var calc = {
+  calculate: function(x, y, fn) {
+    return fn(x, y);
+  }
+}
 
-var name = utl.nameGen(),
-    name2 = utl.nameGen();
+var sum = function (x, y) {
+  return x + y;
+}, diff = function (x, y) {
+  return x - y;
+}
 
+var sumResult = calc.calculate(1,2, sum),
+  diffResult = calc.calculate(1, 2, diff);
+
+alert(sumResult);
+alert(diffResult)
