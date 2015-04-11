@@ -1,15 +1,15 @@
+var utl = (function() {
+      var i = 0;
 
+      return {
+        nameGen: function() {
+          var name = "custname" + i;
+          i = i + 1;
+          return name;
+        }
+    }
+}());
 
-function doSomething(arg1) {
-  return function() {
-    alert(arg1)
-  }
-}
+var name = utl.nameGen(),
+    name2 = utl.nameGen();
 
-var fn = doSomething("Hello Clousure"),
-    fn2 = doSomething("number 2")
-
-fn();
-fn2();
-fn();
-fn = null
