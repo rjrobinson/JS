@@ -1,29 +1,20 @@
-var calculate = function() {
-    var fn = Array.prototype.pop.apply(arguments);
-
-    return fn.apply(null, arguments)
+function reqListener() {
+    console.log(this.responseText);
 }
 
-var sum = function() {
-    var total = 0;
+var xhr = new XMLHttpRequest();
+xhr.onload = reqListener
 
-    for (var i = 0, l = arguments.length; i < l; i++) {
-        total += arguments[i]
-    };
-    return total
-}
+xhr.open("GET", "localhost:4567/txtfile.txt", true)
 
-var diff = function() {
-    var total = Array.prototype.shift.apply(arguments);
+xhr.onreadystatechange = function() {
+    if (xhr.readystate === 4) {
+        alert(xhr.status)
+        alert(xhr.responseText);
+    }
+};
 
-    for (var i = 1, l = arguments.length; i < l; i++) {
-        total = total - arguments[i];
-    };
-    return total;
-}
 
-var sumResult = calculate(1, 2, 3, 4, 5, sum)
-var diffResult = calculate(1, 2, 3, 4, 5, diff)
+xhr.send(null);
 
-alert(sumResult)
-alert(diffResult)
+// alert(xhr.responseText);
