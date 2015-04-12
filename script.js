@@ -1,12 +1,13 @@
-var person = {
-    firstName: "John",
-    lastName: "Doe",
-    age: 47
-}
+(function() {
+    try {
+        //alert("This code will not fail. ")
+        abert("this will fail")
+    } catch (err) {
+        alert("An error occured... ")
+        alert(err.message)
+    } finally {
+        alert("Finally!!!")
+    }
 
 
-localStorage.person = JSON.stringify(person)
-
-var personObj = JSON.parse(localStorage.person)
-
-alert(personObj.firstName + " " + personObj.lastName)
+}());
