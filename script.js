@@ -1,13 +1,12 @@
-(function() {
-    try {
-        //alert("This code will not fail. ")
-        abert("this will fail")
-    } catch (err) {
-        alert("An error occured... ")
-        alert(err.message)
-    } finally {
-        alert("Finally!!!")
+var createPerson = function(firstName, lastName) {
+    return {
+        firstName: firstName,
+        lastName: lastName,
+        sayHi: function() {
+            return "Hi there"
+        }
     }
+};
 
 
-}());
+john = createPerson("John", "Doe")
