@@ -1,18 +1,29 @@
-var Person = function(firstName, lastName) {
-    this.firstName = firstName,
-        this.lastName = lastName,
+var calculate = function() {
+    var fn = Array.prototype.pop.apply(arguments);
+
+    return fn.apply(null, arguments)
 }
 
-Person.prototype.getFullName = function() {
-    alert(this.firstName + " " + this.lastName)
-};
+var sum = function() {
+    var total = 0;
 
-Person.prototype.greet = function(person) {
-    if (person instanceof Person) {
-        return "hello, " + person.getFullName();
-    } else {
-        return "Hello There!"
+    for (var i = 0, l = arguments.length; i < l; i++) {
+        total += arguments[i]
     };
-};
-var person = new Person("john", "doe"),
-    person2 = new Person("jane", "doe");
+    return total
+}
+
+var diff = function() {
+    var total = Array.prototype.shift.apply(arguments);
+
+    for (var i = 1, l = arguments.length; i < l; i++) {
+        total = total - arguments[i];
+    };
+    return total;
+}
+
+var sumResult = calculate(1, 2, 3, 4, 5, sum)
+var diffResult = calculate(1, 2, 3, 4, 5, diff)
+
+alert(sumResult)
+alert(diffResult)
