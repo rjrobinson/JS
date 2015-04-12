@@ -1,20 +1,12 @@
-function reqListener() {
-    console.log(this.responseText);
+var person = {
+    firstName: "John",
+    lastName: "Doe",
+    age: 47
 }
 
-var xhr = new XMLHttpRequest();
-xhr.onload = reqListener
 
-xhr.open("GET", "localhost:4567/txtfile.txt", true)
+localStorage.person = JSON.stringify(person)
 
-xhr.onreadystatechange = function() {
-    if (xhr.readystate === 4) {
-        alert(xhr.status)
-        alert(xhr.responseText);
-    }
-};
+var personObj = JSON.parse(localStorage.person)
 
-
-xhr.send(null);
-
-// alert(xhr.responseText);
+alert(personObj.firstName + " " + personObj.lastName)
