@@ -1,19 +1,18 @@
-// arrays.
-
-var calc = {
-  calculate: function(x, y, fn) {
-    return fn(x, y);
-  }
+var Person = function(firstName, lastName) {
+    this.firstName = firstName,
+        this.lastName = lastName,
 }
 
-var sum = function (x, y) {
-  return x + y;
-}, diff = function (x, y) {
-  return x - y;
-}
+Person.prototype.getFullName = function() {
+    alert(this.firstName + " " + this.lastName)
+};
 
-var sumResult = calc.calculate(1,2, sum),
-  diffResult = calc.calculate(1, 2, diff);
-
-alert(sumResult);
-alert(diffResult)
+Person.prototype.greet = function(person) {
+    if (person instanceof Person) {
+        return "hello, " + person.getFullName();
+    } else {
+        return "Hello There!"
+    };
+};
+var person = new Person("john", "doe"),
+    person2 = new Person("jane", "doe");
